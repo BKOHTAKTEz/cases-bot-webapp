@@ -11,7 +11,6 @@
         html, body {
             height: 100%; 
             overflow-y: auto; 
-            -webkit-overflow-scrolling: touch;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
         
@@ -21,12 +20,8 @@
             padding-bottom: 120px;
         }
         
-        .app {
-            max-width: 400px;
-            margin: 0 auto;
-        }
+        .app { max-width: 400px; margin: 0 auto; }
         
-        /* Header */
         .header {
             display: flex;
             justify-content: space-between;
@@ -34,81 +29,39 @@
             margin-bottom: 25px;
         }
         
-        h1 {
-            color: white;
-            font-size: 28px;
-            font-weight: 700;
-        }
+        h1 { color: white; font-size: 28px; font-weight: 700; }
         
         #topup-btn {
-            width: 56px;
-            height: 56px;
-            border-radius: 28px;
-            background: rgba(255,255,255,0.2);
-            border: 2px solid rgba(255,255,255,0.3);
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
+            width: 56px; height: 56px; border-radius: 28px;
+            background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.3);
+            color: white; font-size: 24px; cursor: pointer; backdrop-filter: blur(10px);
             transition: all 0.3s;
         }
         
-        #topup-btn:active {
-            transform: scale(0.95);
-        }
+        #topup-btn:active { transform: scale(0.95); }
         
-        /* Balance */
         .balance {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: space-around;
+            background: rgba(255,255,255,0.95); border-radius: 20px; padding: 25px;
+            margin-bottom: 25px; display: flex; justify-content: space-around;
             box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
         
-        .balance-item {
-            text-align: center;
-        }
+        .balance-item { text-align: center; }
+        .balance-label { font-size: 14px; color: #666; margin-bottom: 5px; }
+        .balance-value { font-size: 24px; font-weight: 700; color: #333; }
         
-        .balance-label {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-        
-        .balance-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #333;
-        }
-        
-        /* Cases */
         .cases-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            display: flex; flex-direction: column; gap: 15px;
         }
         
         .case-card {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 25px;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            transition: all 0.3s;
-            border: 3px solid transparent;
+            background: rgba(255,255,255,0.95); border-radius: 20px; padding: 25px;
+            cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s; border: 3px solid transparent;
         }
         
-        .case-card:active {
-            transform: scale(0.98);
-        }
-        
-        .case-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-        }
+        .case-card:active { transform: scale(0.98); }
+        .case-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
         
         .free { border-color: #34C759; }
         .bronze { border-color: #FF9500; }
@@ -116,191 +69,117 @@
         .gold { border-color: #FFCC00; }
         .platinum { border-color: #AF52DE; }
         
-        .case-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-            display: block;
-        }
-        
-        .case-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        
-        .case-price {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+        .case-icon { font-size: 48px; margin-bottom: 15px; display: block; }
+        .case-title { font-size: 20px; font-weight: 700; color: #333; margin-bottom: 10px; text-align: center; }
+        .case-price { font-size: 16px; color: #666; margin-bottom: 20px; text-align: center; }
         
         .open-btn {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 15px;
-            background: linear-gradient(45deg, #007AFF, #0056CC);
-            color: white;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
+            width: 100%; padding: 15px; border: none; border-radius: 15px;
+            background: linear-gradient(45deg, #007AFF, #0056CC); color: white;
+            font-size: 18px; font-weight: 700; cursor: pointer; transition: all 0.3s;
         }
         
-        .open-btn:active {
-            background: linear-gradient(45deg, #0056CC, #004499);
-            transform: scale(0.98);
+        .open-btn:active { background: linear-gradient(45deg, #0056CC, #004499); transform: scale(0.98); }
+        
+        /* КОНФИРМ ОКНО - КАК В VIRUS GIFT */
+        #confirm {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); display: none; align-items: center;
+            justify-content: center; z-index: 10000; padding: 30px;
+        }
+        
+        #confirm.show { display: flex; }
+        
+        .confirm-box {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d); border-radius: 25px;
+            padding: 40px; max-width: 380px; width: 95%; text-align: center;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.8); border: 2px solid #FFD700;
+        }
+        
+        .confirm-icon { font-size: 64px; margin-bottom: 20px; }
+        .confirm-title { 
+            font-size: 24px; font-weight: 800; color: white; margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .confirm-price { 
+            font-size: 20px; color: #FFD700; font-weight: 700; margin-bottom: 30px;
+        }
+        
+        .confirm-buttons {
+            display: flex; gap: 15px; justify-content: center;
+        }
+        
+        .confirm-yes {
+            flex: 1; padding: 18px; border: none; border-radius: 18px;
+            background: linear-gradient(45deg, #34C759, #28A745); color: white;
+            font-size: 18px; font-weight: 700; cursor: pointer;
+        }
+        
+        .confirm-no {
+            flex: 1; padding: 18px; border: none; border-radius: 18px;
+            background: linear-gradient(45deg, #6C757D, #5A6268); color: white;
+            font-size: 18px; font-weight: 700; cursor: pointer;
         }
         
         /* Animation */
         #animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.95);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            flex-direction: column;
-            padding: 40px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); display: none; align-items: center;
+            justify-content: center; z-index: 9999; flex-direction: column; padding: 40px;
         }
         
-        #animation.show {
-            display: flex;
-        }
+        #animation.show { display: flex; }
         
         .scroll-area {
-            width: 90%;
-            height: 120px;
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            border-radius: 25px;
-            padding: 25px;
-            margin-bottom: 40px;
-            overflow: hidden;
+            width: 90%; height: 120px; background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 25px; padding: 25px; margin-bottom: 40px; overflow: hidden;
             box-shadow: 0 20px 60px rgba(255,215,0,0.4);
         }
         
         #reward-scroll {
-            display: flex;
-            animation: scroll 3s linear infinite;
-            font-size: 26px;
-            font-weight: 800;
-            color: #111;
-            white-space: nowrap;
+            display: flex; animation: scroll 3s linear infinite; font-size: 26px;
+            font-weight: 800; color: #111; white-space: nowrap;
         }
         
-        .reward-item {
-            padding: 12px 25px;
-            margin-right: 30px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 15px;
-        }
+        .reward-item { padding: 12px 25px; margin-right: 30px; background: rgba(255,255,255,0.3); border-radius: 15px; }
         
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
         
-        .final-result {
-            text-align: center;
-            color: white;
-            display: none;
-        }
+        .final-result { text-align: center; color: white; display: none; }
+        .final-result.show { display: block; }
         
-        .final-result.show {
-            display: block;
-        }
-        
-        .final-icon {
-            font-size: 80px;
-            margin-bottom: 20px;
-        }
-        
-        .final-stars {
-            font-size: 60px;
-            font-weight: 900;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, #FFD700, #FF6B35);
-            -webkit-background-clip: text;
+        .final-icon { font-size: 80px; margin-bottom: 20px; }
+        .final-stars { 
+            font-size: 60px; font-weight: 900; margin-bottom: 15px;
+            background: linear-gradient(45deg, #FFD700, #FF6B35); -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
-        .final-text {
-            font-size: 24px;
-            font-weight: 700;
-        }
+        .final-text { font-size: 24px; font-weight: 700; }
         
         /* Modal */
         .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            padding: 30px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); display: none; align-items: center;
+            justify-content: center; z-index: 10000; padding: 30px;
         }
         
-        .modal.show {
-            display: flex;
-        }
+        .modal.show { display: flex; }
         
-        .modal-box {
-            background: white;
-            border-radius: 25px;
-            padding: 35px;
-            max-width: 350px;
-            width: 95%;
-            text-align: center;
-        }
-        
-        .modal-title {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 25px;
-        }
-        
+        .modal-box { background: white; border-radius: 25px; padding: 35px; max-width: 350px; width: 95%; text-align: center; }
+        .modal-title { font-size: 24px; color: #333; margin-bottom: 25px; }
         .topup-item {
-            padding: 25px;
-            border: 3px solid #E5E5E7;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: #F9F9F9;
+            padding: 25px; border: 3px solid #E5E5E7; border-radius: 20px; margin-bottom: 20px;
+            cursor: pointer; transition: all 0.3s; background: #F9F9F9;
         }
         
-        .topup-item:active {
-            border-color: #007AFF;
-            transform: scale(0.98);
-        }
-        
-        .stars-amount {
-            font-size: 28px;
-            font-weight: 700;
-            color: #333;
-        }
-        
+        .topup-item:active { border-color: #007AFF; transform: scale(0.98); }
+        .stars-amount { font-size: 28px; font-weight: 700; color: #333; }
         .close-modal {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 15px;
-            background: #F2F2F7;
-            color: #333;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
+            width: 100%; padding: 15px; border: none; border-radius: 15px;
+            background: #F2F2F7; color: #333; font-size: 18px; font-weight: 600; cursor: pointer;
         }
     </style>
 </head>
@@ -363,6 +242,19 @@
         </div>
     </div>
 
+    <!-- КОНФИРМ ОКНО -->
+    <div id="confirm">
+        <div class="confirm-box">
+            <div class="confirm-icon" id="confirm-icon">🎁</div>
+            <div class="confirm-title" id="confirm-title">Бесплатный кейс</div>
+            <div class="confirm-price" id="confirm-price">БЕСПЛАТНО</div>
+            <div class="confirm-buttons">
+                <button class="confirm-no" id="confirm-no">❌ Отмена</button>
+                <button class="confirm-yes" id="confirm-yes">🎮 ОТКРЫТЬ КЕЙС</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Animation -->
     <div id="animation">
         <div class="scroll-area">
@@ -396,28 +288,33 @@
     </div>
 
     <script>
-        // Telegram init
         const tg = window.Telegram.WebApp;
         tg.expand();
 
-        // Data
         let stars = 100;
         let ton = 1.5;
         let animating = false;
+        let currentCase = null;
 
         const cases = {
-            1: {stars: 0, ton: 0, rewards: [[1,70],[3,25],[5,5]]},
-            2: {stars: 50, ton: 0.5, rewards: [[10,60],[25,30],[100,10]]},
-            3: {stars: 200, ton: 2, rewards: [[50,55],[250,35],[500,10]]},
-            4: {stars: 500, ton: 5, rewards: [[150,50],[750,40],[1500,10]]},
-            5: {stars: 1000, ton: 10, rewards: [[400,45],[2000,45],[5000,10]]}
+            1: {icon: '🎁', name: 'Бесплатный', stars: 0, ton: 0, rewards: [[1,70],[3,25],[5,5]]},
+            2: {icon: '🥉', name: 'Бронзовый', stars: 50, ton: 0.5, rewards: [[10,60],[25,30],[100,10]]},
+            3: {icon: '🥈', name: 'Серебряный', stars: 200, ton: 2, rewards: [[50,55],[250,35],[500,10]]},
+            4: {icon: '🥇', name: 'Золотой', stars: 500, ton: 5, rewards: [[150,50],[750,40],[1500,10]]},
+            5: {icon: '💎', name: 'Платиновый', stars: 1000, ton: 10, rewards: [[400,45],[2000,45],[5000,10]]}
         };
 
         const fakeRewards = ['💎 5000⭐', '🥇 1500⭐', '💎 2000⭐', '🥇 750⭐', '⭐ 100⭐'];
 
-        // DOM elements
+        // Elements
         const starsEl = document.getElementById('stars-balance');
         const tonEl = document.getElementById('ton-balance');
+        const confirmEl = document.getElementById('confirm');
+        const confirmIconEl = document.getElementById('confirm-icon');
+        const confirmTitleEl = document.getElementById('confirm-title');
+        const confirmPriceEl = document.getElementById('confirm-price');
+        const confirmYesEl = document.getElementById('confirm-yes');
+        const confirmNoEl = document.getElementById('confirm-no');
         const animationEl = document.getElementById('animation');
         const scrollEl = document.getElementById('reward-scroll');
         const finalStarsEl = document.getElementById('final-stars');
@@ -426,7 +323,6 @@
         const closeModalEl = document.getElementById('close-modal');
         const topupBtnEl = document.getElementById('topup-btn');
 
-        // Update display
         function updateDisplay() {
             starsEl.textContent = stars;
             tonEl.textContent = ton.toFixed(2);
@@ -434,40 +330,56 @@
             localStorage.setItem('ton', ton);
         }
 
-        // Event listeners
+        function showConfirm(caseId) {
+            currentCase = caseId;
+            const caseData = cases[caseId];
+            confirmIconEl.textContent = caseData.icon;
+            confirmTitleEl.textContent = caseData.name + ' кейс';
+            confirmPriceEl.textContent = caseData.stars > 0 ? `${caseData.stars}⭐ / ${caseData.ton} TON` : 'БЕСПЛАТНО';
+            confirmEl.classList.add('show');
+            tg.HapticFeedback.impactOccurred('medium');
+        }
+
+        function hideConfirm() {
+            confirmEl.classList.remove('show');
+            currentCase = null;
+        }
+
         function initEvents() {
-            // Topup button
-            topupBtnEl.addEventListener('click', () => {
-                modalEl.classList.add('show');
-                tg.HapticFeedback.impactOccurred('light');
-            });
-
-            // Close modal
-            closeModalEl.addEventListener('click', () => {
-                modalEl.classList.remove('show');
-            });
-
-            // Topup options
+            // Topup
+            topupBtnEl.onclick = () => { modalEl.classList.add('show'); tg.HapticFeedback.impactOccurred('light'); };
+            closeModalEl.onclick = () => modalEl.classList.remove('show');
+            
             document.querySelectorAll('.topup-item').forEach(item => {
-                item.addEventListener('click', () => {
+                item.onclick = () => {
                     const amount = parseInt(item.dataset.stars);
                     stars += amount;
                     updateDisplay();
                     modalEl.classList.remove('show');
                     tg.showAlert(`✅ +${amount} Stars!`);
                     tg.HapticFeedback.notificationOccurred('success');
-                });
+                };
             });
 
-            // Case buttons
+            // Cases
             document.querySelectorAll('.open-btn, .case-card').forEach(card => {
-                card.addEventListener('click', (e) => {
+                card.onclick = (e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     const caseId = card.dataset.case || card.closest('.case-card').dataset.case;
-                    openCase(caseId);
-                });
+                    showConfirm(caseId);
+                };
             });
+
+            // Confirm buttons
+            confirmYesEl.onclick = () => {
+                if (currentCase && !animating) {
+                    hideConfirm();
+                    openCase(currentCase);
+                }
+            };
+            
+            confirmNoEl.onclick = hideConfirm;
         }
 
         function openCase(caseId) {
@@ -475,7 +387,6 @@
 
             const caseData = cases[caseId];
             
-            // Check balance
             if (caseId > 1 && stars < caseData.stars && ton < caseData.ton) {
                 tg.showAlert('❌ Недостаточно Stars или TON!');
                 return;
@@ -483,7 +394,6 @@
 
             animating = true;
             
-            // Deduct cost
             if (caseId > 1) {
                 if (stars >= caseData.stars) {
                     stars -= caseData.stars;
@@ -493,12 +403,10 @@
                 updateDisplay();
             }
 
-            // Show animation
             showAnimation(caseId);
         }
 
         function showAnimation(caseId) {
-            // Fake scroll rewards
             scrollEl.innerHTML = '';
             for (let i = 0; i < 25; i++) {
                 const span = document.createElement('span');
@@ -509,22 +417,16 @@
 
             animationEl.classList.add('show');
 
-            // Calculate real reward (mostly cheap)
             const caseData = cases[caseId];
             const rand = Math.random();
-            let reward = caseData.rewards[0][0]; // cheap by default
+            let reward = caseData.rewards[0][0];
 
-            if (rand < 0.7) {
-                reward = caseData.rewards[0][0]; // 70% cheapest
-            } else if (rand < 0.95) {
-                reward = caseData.rewards[1][0]; // 25% medium
-            } else {
-                reward = caseData.rewards[2][0]; // 5% best
-            }
+            if (rand < 0.7) reward = caseData.rewards[0][0];
+            else if (rand < 0.95) reward = caseData.rewards[1][0];
+            else reward = caseData.rewards[2][0];
 
             stars += reward;
 
-            // Show final result
             setTimeout(() => {
                 scrollEl.style.display = 'none';
                 finalResultEl.classList.add('show');
@@ -532,7 +434,6 @@
                 tg.HapticFeedback.impactOccurred('heavy');
             }, 2800);
 
-            // Close animation
             setTimeout(() => {
                 animationEl.classList.remove('show');
                 scrollEl.style.display = 'flex';
@@ -543,7 +444,7 @@
             }, 4800);
         }
 
-        // Start
+        // Init
         document.addEventListener('DOMContentLoaded', () => {
             stars = parseInt(localStorage.getItem('stars') || '100');
             ton = parseFloat(localStorage.getItem('ton') || '1.5');
