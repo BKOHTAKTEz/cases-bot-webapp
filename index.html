@@ -9,26 +9,17 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         html, body {
-            height: 100%; 
-            overflow-y: auto; 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            height: 100%; overflow-y: auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
         
         body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
-            padding-bottom: 120px;
+            padding: 20px; padding-bottom: 120px;
         }
         
         .app { max-width: 400px; margin: 0 auto; }
         
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-        
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
         h1 { color: white; font-size: 28px; font-weight: 700; }
         
         #topup-btn {
@@ -50,9 +41,7 @@
         .balance-label { font-size: 14px; color: #666; margin-bottom: 5px; }
         .balance-value { font-size: 24px; font-weight: 700; color: #333; }
         
-        .cases-grid {
-            display: flex; flex-direction: column; gap: 15px;
-        }
+        .cases-grid { display: flex; flex-direction: column; gap: 15px; }
         
         .case-card {
             background: rgba(255,255,255,0.95); border-radius: 20px; padding: 25px;
@@ -81,7 +70,7 @@
         
         .open-btn:active { background: linear-gradient(45deg, #0056CC, #004499); transform: scale(0.98); }
         
-        /* КОНФИРМ ОКНО - КАК В VIRUS GIFT */
+        /* КОНФИРМ */
         #confirm {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.95); display: none; align-items: center;
@@ -97,31 +86,19 @@
         }
         
         .confirm-icon { font-size: 64px; margin-bottom: 20px; }
-        .confirm-title { 
-            font-size: 24px; font-weight: 800; color: white; margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        .confirm-price { 
-            font-size: 20px; color: #FFD700; font-weight: 700; margin-bottom: 30px;
-        }
+        .confirm-title { font-size: 24px; font-weight: 800; color: white; margin-bottom: 15px; }
+        .confirm-price { font-size: 20px; color: #FFD700; font-weight: 700; margin-bottom: 30px; }
         
-        .confirm-buttons {
-            display: flex; gap: 15px; justify-content: center;
-        }
-        
-        .confirm-yes {
+        .confirm-buttons { display: flex; gap: 15px; justify-content: center; }
+        .confirm-yes, .confirm-no {
             flex: 1; padding: 18px; border: none; border-radius: 18px;
-            background: linear-gradient(45deg, #34C759, #28A745); color: white;
             font-size: 18px; font-weight: 700; cursor: pointer;
         }
         
-        .confirm-no {
-            flex: 1; padding: 18px; border: none; border-radius: 18px;
-            background: linear-gradient(45deg, #6C757D, #5A6268); color: white;
-            font-size: 18px; font-weight: 700; cursor: pointer;
-        }
+        .confirm-yes { background: linear-gradient(45deg, #34C759, #28A745); color: white; }
+        .confirm-no { background: linear-gradient(45deg, #6C757D, #5A6268); color: white; }
         
-        /* Animation */
+        /* ✅ НОВАЯ РУЛЕТКА С ОСТАНОВКОЙ */
         #animation {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.95); display: none; align-items: center;
@@ -130,68 +107,55 @@
         
         #animation.show { display: flex; }
         
-        .scroll-area {
-            width: 90%; height: 120px; background: linear-gradient(45deg, #FFD700, #FFA500);
-            border-radius: 25px; padding: 25px; margin-bottom: 40px; overflow: hidden;
-            box-shadow: 0 20px 60px rgba(255,215,0,0.4);
+        .roulette-container {
+            width: 95%; height: 160px; background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 30px; padding: 30px; position: relative; overflow: hidden;
+            box-shadow: 0 25px 70px rgba(255,215,0,0.5); margin-bottom: 40px;
         }
         
-        #reward-scroll {
-            display: flex; animation: scroll 3s linear infinite; font-size: 26px;
-            font-weight: 800; color: #111; white-space: nowrap;
+        .roulette-track {
+            position: absolute; top: 50%; left: 0; width: 200%; height: 100%;
+            display: flex; transition: transform 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
-        .reward-item { padding: 12px 25px; margin-right: 30px; background: rgba(255,255,255,0.3); border-radius: 15px; }
+        .reward-item {
+            flex: 0 0 180px; height: 100%; display: flex; align-items: center;
+            justify-content: center; font-size: 24px; font-weight: 800; color: #111;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); padding: 10px;
+        }
         
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        .reward-win {
+            flex: 0 0 220px !important; background: linear-gradient(45deg, #FF6B35, #FFD700);
+            color: white !important; text-shadow: none; border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255,107,53,0.8); font-size: 28px !important;
+            transform: scale(1.1);
         }
         
         .final-result { text-align: center; color: white; display: none; }
         .final-result.show { display: block; }
         
         .final-icon { font-size: 80px; margin-bottom: 20px; }
-        .final-stars { 
-            font-size: 60px; font-weight: 900; margin-bottom: 15px;
-            background: linear-gradient(45deg, #FFD700, #FF6B35); -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .final-stars { font-size: 60px; font-weight: 900; margin-bottom: 15px; background: linear-gradient(45deg, #FFD700, #FF6B35); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .final-text { font-size: 24px; font-weight: 700; }
         
         /* Modal */
-        .modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); display: none; align-items: center;
-            justify-content: center; z-index: 10000; padding: 30px;
-        }
-        
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 10000; padding: 30px; }
         .modal.show { display: flex; }
-        
         .modal-box { background: white; border-radius: 25px; padding: 35px; max-width: 350px; width: 95%; text-align: center; }
         .modal-title { font-size: 24px; color: #333; margin-bottom: 25px; }
-        .topup-item {
-            padding: 25px; border: 3px solid #E5E5E7; border-radius: 20px; margin-bottom: 20px;
-            cursor: pointer; transition: all 0.3s; background: #F9F9F9;
-        }
-        
+        .topup-item { padding: 25px; border: 3px solid #E5E5E7; border-radius: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s; background: #F9F9F9; }
         .topup-item:active { border-color: #007AFF; transform: scale(0.98); }
         .stars-amount { font-size: 28px; font-weight: 700; color: #333; }
-        .close-modal {
-            width: 100%; padding: 15px; border: none; border-radius: 15px;
-            background: #F2F2F7; color: #333; font-size: 18px; font-weight: 600; cursor: pointer;
-        }
+        .close-modal { width: 100%; padding: 15px; border: none; border-radius: 15px; background: #F2F2F7; color: #333; font-size: 18px; font-weight: 600; cursor: pointer; }
     </style>
 </head>
 <body>
     <div class="app">
-        <!-- Header -->
         <div class="header">
             <h1>🎰 CasesBot</h1>
             <button id="topup-btn">➕</button>
         </div>
 
-        <!-- Balance -->
         <div class="balance">
             <div class="balance-item">
                 <span class="balance-label">⭐ Stars</span>
@@ -203,7 +167,6 @@
             </div>
         </div>
 
-        <!-- Cases -->
         <div class="cases-grid">
             <div class="case-card free" data-case="1">
                 <div class="case-icon">🎁</div>
@@ -211,28 +174,24 @@
                 <div class="case-price">БЕСПЛАТНО</div>
                 <button class="open-btn" data-case="1">ОТКРЫТЬ</button>
             </div>
-            
             <div class="case-card bronze" data-case="2">
                 <div class="case-icon">🥉</div>
                 <div class="case-title">Бронзовый</div>
                 <div class="case-price">50⭐ / 0.5 TON</div>
                 <button class="open-btn" data-case="2">ОТКРЫТЬ</button>
             </div>
-            
             <div class="case-card silver" data-case="3">
                 <div class="case-icon">🥈</div>
                 <div class="case-title">Серебряный</div>
                 <div class="case-price">200⭐ / 2 TON</div>
                 <button class="open-btn" data-case="3">ОТКРЫТЬ</button>
             </div>
-            
             <div class="case-card gold" data-case="4">
                 <div class="case-icon">🥇</div>
                 <div class="case-title">Золотой</div>
                 <div class="case-price">500⭐ / 5 TON</div>
                 <button class="open-btn" data-case="4">ОТКРЫТЬ</button>
             </div>
-            
             <div class="case-card platinum" data-case="5">
                 <div class="case-icon">💎</div>
                 <div class="case-title">Платиновый</div>
@@ -242,7 +201,7 @@
         </div>
     </div>
 
-    <!-- КОНФИРМ ОКНО -->
+    <!-- Confirm -->
     <div id="confirm">
         <div class="confirm-box">
             <div class="confirm-icon" id="confirm-icon">🎁</div>
@@ -255,10 +214,10 @@
         </div>
     </div>
 
-    <!-- Animation -->
+    <!-- ✅ НОВАЯ РУЛЕТКА -->
     <div id="animation">
-        <div class="scroll-area">
-            <div id="reward-scroll"></div>
+        <div class="roulette-container">
+            <div class="roulette-track" id="roulette-track"></div>
         </div>
         <div class="final-result" id="final-result">
             <div class="final-icon">⭐</div>
@@ -304,7 +263,7 @@
             5: {icon: '💎', name: 'Платиновый', stars: 1000, ton: 10, rewards: [[400,45],[2000,45],[5000,10]]}
         };
 
-        const fakeRewards = ['💎 5000⭐', '🥇 1500⭐', '💎 2000⭐', '🥇 750⭐', '⭐ 100⭐'];
+        const allRewards = ['⭐ 1⭐', '⭐ 3⭐', '⭐ 5⭐', '⭐ 10⭐', '⭐ 25⭐', '⭐ 50⭐', '⭐ 100⭐', '⭐ 250⭐', '⭐ 500⭐', '⭐ 750⭐', '⭐ 1500⭐', '💎 2000⭐', '💎 5000⭐'];
 
         // Elements
         const starsEl = document.getElementById('stars-balance');
@@ -316,7 +275,7 @@
         const confirmYesEl = document.getElementById('confirm-yes');
         const confirmNoEl = document.getElementById('confirm-no');
         const animationEl = document.getElementById('animation');
-        const scrollEl = document.getElementById('reward-scroll');
+        const rouletteTrackEl = document.getElementById('roulette-track');
         const finalStarsEl = document.getElementById('final-stars');
         const finalResultEl = document.getElementById('final-result');
         const modalEl = document.getElementById('modal');
@@ -346,7 +305,6 @@
         }
 
         function initEvents() {
-            // Topup
             topupBtnEl.onclick = () => { modalEl.classList.add('show'); tg.HapticFeedback.impactOccurred('light'); };
             closeModalEl.onclick = () => modalEl.classList.remove('show');
             
@@ -361,7 +319,6 @@
                 };
             });
 
-            // Cases
             document.querySelectorAll('.open-btn, .case-card').forEach(card => {
                 card.onclick = (e) => {
                     e.preventDefault();
@@ -371,7 +328,6 @@
                 };
             });
 
-            // Confirm buttons
             confirmYesEl.onclick = () => {
                 if (currentCase && !animating) {
                     hideConfirm();
@@ -403,48 +359,69 @@
                 updateDisplay();
             }
 
-            showAnimation(caseId);
+            showRoulette(caseId);
         }
 
-        function showAnimation(caseId) {
-            scrollEl.innerHTML = '';
-            for (let i = 0; i < 25; i++) {
-                const span = document.createElement('span');
-                span.className = 'reward-item';
-                span.textContent = fakeRewards[Math.floor(Math.random() * fakeRewards.length)];
-                scrollEl.appendChild(span);
+        function showRoulette(caseId) {
+            // Создаём длинную ленту призов
+            rouletteTrackEl.innerHTML = '';
+            
+            // 40 обычных призов + выигрыш
+            const caseData = cases[caseId];
+            const rand = Math.random();
+            let winIndex = 0;
+            
+            if (rand < 0.7) winIndex = 0; // 70% шанс минимального
+            else if (rand < 0.95) winIndex = 1; // 25% средний
+            else winIndex = 2; // 5% максимальный
+            
+            const winReward = caseData.rewards[winIndex][0];
+            const winText = `⭐ ${winReward}⭐`;
+
+            // Заполняем ленту
+            for (let i = 0; i < 45; i++) {
+                const div = document.createElement('div');
+                div.className = 'reward-item';
+                
+                if (i === 20 + winIndex * 5) { // Позиция выигрыша в центре
+                    div.className = 'reward-item reward-win';
+                    div.textContent = winText;
+                    div.dataset.win = true;
+                } else {
+                    const randomReward = allRewards[Math.floor(Math.random() * allRewards.length)];
+                    div.textContent = randomReward;
+                }
+                
+                rouletteTrackEl.appendChild(div);
             }
 
             animationEl.classList.add('show');
-
-            const caseData = cases[caseId];
-            const rand = Math.random();
-            let reward = caseData.rewards[0][0];
-
-            if (rand < 0.7) reward = caseData.rewards[0][0];
-            else if (rand < 0.95) reward = caseData.rewards[1][0];
-            else reward = caseData.rewards[2][0];
-
-            stars += reward;
-
+            
+            // ✅ Прокрутка с остановкой на выигрыше
             setTimeout(() => {
-                scrollEl.style.display = 'none';
-                finalResultEl.classList.add('show');
-                finalStarsEl.textContent = reward;
+                rouletteTrackEl.style.transform = 'translateX(-1080px)'; // Точно на выигрыш
                 tg.HapticFeedback.impactOccurred('heavy');
-            }, 2800);
+            }, 100);
+
+            stars += winReward;
+            
+            setTimeout(() => {
+                rouletteTrackEl.style.display = 'none';
+                finalResultEl.classList.add('show');
+                finalStarsEl.textContent = winReward;
+                tg.HapticFeedback.impactOccurred('heavy');
+            }, 4200);
 
             setTimeout(() => {
                 animationEl.classList.remove('show');
-                scrollEl.style.display = 'flex';
+                rouletteTrackEl.style.display = 'flex';
                 finalResultEl.classList.remove('show');
                 animating = false;
                 tg.HapticFeedback.notificationOccurred('success');
                 updateDisplay();
-            }, 4800);
+            }, 6200);
         }
 
-        // Init
         document.addEventListener('DOMContentLoaded', () => {
             stars = parseInt(localStorage.getItem('stars') || '100');
             ton = parseFloat(localStorage.getItem('ton') || '1.5');
