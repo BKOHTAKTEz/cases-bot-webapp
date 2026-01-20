@@ -6,295 +6,119 @@
     <title>CasesBot 🎰</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            height: 100vh;
-            overflow: hidden;
+            height: 100vh; overflow: hidden; 
         }
-
-        .app {
-            padding: 20px;
-            max-width: 400px;
-            margin: 0 auto;
-            height: 100vh;
-        }
-
+        .app { padding: 20px; max-width: 400px; margin: 0 auto; height: 100vh; }
+        
         /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        h1 { color: white; font-size: 24px; font-weight: 700; }
+        .topup-btn { 
+            width: 50px; height: 50px; border-radius: 25px; 
+            background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.3); 
+            color: white; font-size: 24px; cursor: pointer; backdrop-filter: blur(10px); 
+            transition: all 0.3s ease; 
         }
-
-        h1 {
-            color: white;
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .topup-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 25px;
-            background: rgba(255,255,255,0.2);
-            border: 2px solid rgba(255,255,255,0.3);
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .topup-btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: scale(1.05);
-        }
+        .topup-btn:hover { background: rgba(255,255,255,0.3); transform: scale(1.05); }
 
         /* Баланс */
-        .balance {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-around;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        .balance { 
+            background: rgba(255,255,255,0.95); border-radius: 20px; padding: 20px; 
+            margin-bottom: 20px; display: flex; justify-content: space-around; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2); 
         }
-
-        .balance-item {
-            text-align: center;
-        }
-
-        .balance-label {
-            display: block;
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .balance-value {
-            font-size: 20px;
-            font-weight: 700;
-            color: #333;
-        }
+        .balance-item { text-align: center; }
+        .balance-label { display: block; font-size: 12px; color: #666; margin-bottom: 5px; }
+        .balance-value { font-size: 20px; font-weight: 700; color: #333; }
 
         /* Кейсы */
-        .cases-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
+        .cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .case-card { 
+            background: rgba(255,255,255,0.95); border-radius: 20px; padding: 20px; 
+            text-align: center; cursor: pointer; transition: all 0.3s ease; 
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1); position: relative; overflow: hidden; 
         }
-
-        .case-card {
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .case-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-
+        .case-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
         .case-card.free { border: 3px solid #34C759; }
         .case-card.bronze { border: 3px solid #FF9500; }
         .case-card.silver { border: 3px solid #8E8E93; }
         .case-card.gold { border: 3px solid #FFCC00; }
         .case-card.platinum { border: 3px solid #AF52DE; }
+        .case-icon { font-size: 40px; margin-bottom: 10px; }
+        .case-title { font-size: 16px; font-weight: 700; color: #333; margin-bottom: 8px; }
+        .case-price { font-size: 14px; color: #666; margin-bottom: 15px; }
+        .open-case-btn { 
+            width: 100%; padding: 12px; border: none; border-radius: 12px; 
+            background: linear-gradient(45deg, #007AFF, #0056CC); color: white; 
+            font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; 
+        }
+        .open-case-btn:hover { transform: scale(1.02); box-shadow: 0 5px 15px rgba(0,122,255,0.4); }
+        .open-case-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-        .case-icon {
-            font-size: 40px;
-            margin-bottom: 10px;
+        /* Анимация прокрутки */
+        .case-animation { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; 
+            z-index: 1000; 
+        }
+        .case-animation.hidden { display: none; }
+        .scroll-rewards { 
+            position: absolute; width: 300px; height: 100px; overflow: hidden; 
+            top: 40%; left: 50%; transform: translateX(-50%); 
+        }
+        .reward-scroll { 
+            display: flex; animation: scrollRewards 3s linear infinite; 
+            font-size: 24px; font-weight: 700; color: gold; text-shadow: 2px 2px 4px black; 
+        }
+        @keyframes scrollRewards {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        .final-reward { 
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+            text-align: center; color: white; font-size: 48px; font-weight: 800; 
+            animation: bounceFinal 1s ease-in-out infinite; display: none; 
+        }
+        @keyframes bounceFinal {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.3); }
         }
 
-        .case-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 8px;
+        /* Модалка Stars */
+        .modal { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; 
+            z-index: 1000; 
+        }
+        .modal.hidden { display: none; }
+        .modal-content { 
+            background: white; border-radius: 20px; padding: 30px; max-width: 350px; 
+            width: 90%; text-align: center; 
+        }
+        .topup-options { display: flex; flex-direction: column; gap: 15px; margin: 20px 0; }
+        .topup-option { 
+            padding: 20px; border: 2px solid #E5E5E7; border-radius: 16px; 
+            background: #F2F2F7; cursor: pointer; transition: all 0.3s ease; text-align: left; 
+        }
+        .topup-option:hover { border-color: #007AFF; background: #E8F4FD; transform: translateY(-2px); }
+        .topup-price { font-size: 20px; font-weight: 700; color: #000; display: block; }
+        .topup-ton { font-size: 14px; color: #666; }
+        .close-modal { 
+            width: 100%; padding: 12px; border: none; border-radius: 12px; 
+            background: #E5E5E7; color: #000; font-size: 16px; cursor: pointer; 
         }
 
-        .case-price {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .open-case-btn {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(45deg, #007AFF, #0056CC);
-            color: white;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .open-case-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 5px 15px rgba(0,122,255,0.4);
-        }
-
-        /* Анимация кейса */
-        .case-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-
-        .case-animation.hidden {
-            display: none;
-        }
-
-        .case-shake {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            border-radius: 50%;
-            position: relative;
-            animation: shake 1s ease-in-out infinite;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
-        }
-
-        .reward-popup {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-        }
-
-        .reward-icon {
-            font-size: 60px;
-            margin-bottom: 10px;
-            animation: bounce 1s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
-        .reward-amount {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .reward-text {
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        /* Модалка */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-
-        .modal.hidden {
-            display: none;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 350px;
-            width: 90%;
-            text-align: center;
-        }
-
-        .topup-options {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .topup-option {
-            padding: 20px;
-            border: 2px solid #E5E5E7;
-            border-radius: 16px;
-            background: #F2F2F7;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: left;
-        }
-
-        .topup-option:hover {
-            border-color: #007AFF;
-            background: #E8F4FD;
-            transform: translateY(-2px);
-        }
-
-        .topup-price {
-            font-size: 20px;
-            font-weight: 700;
-            color: #000;
-            display: block;
-        }
-
-        .topup-ton {
-            font-size: 14px;
-            color: #666;
-        }
-
-        .close-modal {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 12px;
-            background: #E5E5E7;
-            color: #000;
-            font-size: 16px;
-            cursor: pointer;
-        }
+        /* TON Connect */
+        #ton-connect { margin-top: 10px; padding: 10px; background: #F2F2F7; border-radius: 12px; }
     </style>
 </head>
 <body>
     <div class="app">
-        <!-- Header с плюсиком -->
+        <!-- Header -->
         <header>
             <h1>🎰 CasesBot</h1>
             <button id="topup-btn" class="topup-btn">➕</button>
@@ -308,75 +132,85 @@
             </div>
             <div class="balance-item">
                 <span class="balance-label">⛓ TON</span>
-                <span id="ton-balance" class="balance-value">0</span>
+                <span id="ton-balance" class="balance-value">0.00</span>
             </div>
         </div>
 
         <!-- Кейсы -->
-        <div class="cases-grid" id="cases-grid">
+        <div class="cases-grid">
             <div class="case-card free" data-case="1">
                 <div class="case-icon">🎁</div>
                 <div class="case-title">Бесплатный</div>
-                <div class="case-price">0⭐ / 0 TON</div>
-                <button class="open-case-btn">ОТКРЫТЬ</button>
+                <div class="case-price">БЕСПЛАТНО</div>
+                <button class="open-case-btn" data-case="1">ОТКРЫТЬ</button>
             </div>
             <div class="case-card bronze" data-case="2">
                 <div class="case-icon">🥉</div>
                 <div class="case-title">Бронзовый</div>
                 <div class="case-price">50⭐ / 0.5 TON</div>
-                <button class="open-case-btn">ОТКРЫТЬ</button>
+                <button class="open-case-btn" data-case="2">ОТКРЫТЬ</button>
             </div>
             <div class="case-card silver" data-case="3">
                 <div class="case-icon">🥈</div>
                 <div class="case-title">Серебряный</div>
                 <div class="case-price">200⭐ / 2 TON</div>
-                <button class="open-case-btn">ОТКРЫТЬ</button>
+                <button class="open-case-btn" data-case="3">ОТКРЫТЬ</button>
             </div>
             <div class="case-card gold" data-case="4">
                 <div class="case-icon">🥇</div>
                 <div class="case-title">Золотой</div>
                 <div class="case-price">500⭐ / 5 TON</div>
-                <button class="open-case-btn">ОТКРЫТЬ</button>
+                <button class="open-case-btn" data-case="4">ОТКРЫТЬ</button>
             </div>
             <div class="case-card platinum" data-case="5">
                 <div class="case-icon">💎</div>
                 <div class="case-title">Платиновый</div>
                 <div class="case-price">1000⭐ / 10 TON</div>
-                <button class="open-case-btn">ОТКРЫТЬ</button>
+                <button class="open-case-btn" data-case="5">ОТКРЫТЬ</button>
             </div>
         </div>
 
-        <!-- Анимация прокрутки -->
+        <!-- Анимация -->
         <div id="case-animation" class="case-animation hidden">
-            <div class="case-open-container">
-                <div class="case-shake"></div>
-                <div class="reward-popup" id="reward-popup">
-                    <div class="reward-icon">⭐</div>
-                    <div class="reward-amount" id="reward-amount">0</div>
-                    <div class="reward-text">ПОЗДРАВЛЯЕМ!</div>
-                </div>
+            <div class="scroll-rewards" id="scroll-rewards"></div>
+            <div class="final-reward" id="final-reward">
+                <div style="font-size: 36px; margin-bottom: 10px;">⭐</div>
+                <div id="final-amount" style="font-size: 48px;">5</div>
+                <div style="font-size: 20px;">ПОЗДРАВЛЯЕМ!</div>
             </div>
         </div>
 
-        <!-- Модалка пополнения -->
-        <div id="topup-modal" class="modal hidden">
+        <!-- Stars пополнение -->
+        <div id="stars-modal" class="modal hidden">
             <div class="modal-content">
-                <h3>➕ Пополнить баланс</h3>
+                <h3>⭐ Купить Stars</h3>
                 <div class="topup-options">
-                    <button class="topup-option" data-stars="50" data-ton="0.5">
-                        <span class="topup-price">50⭐</span>
-                        <span class="topup-ton">0.5 TON</span>
+                    <button class="topup-option" data-stars="50">
+                        <span class="topup-price">50 ⭐</span>
+                        <span class="topup-ton">💳 Оплатить</span>
                     </button>
-                    <button class="topup-option" data-stars="250" data-ton="2.5">
-                        <span class="topup-price">250⭐</span>
-                        <span class="topup-ton">2.5 TON</span>
+                    <button class="topup-option" data-stars="250">
+                        <span class="topup-price">250 ⭐</span>
+                        <span class="topup-ton">💳 Оплатить</span>
                     </button>
-                    <button class="topup-option" data-stars="1000" data-ton="10">
-                        <span class="topup-price">1000⭐</span>
-                        <span class="topup-ton">10 TON</span>
+                    <button class="topup-option" data-stars="1000">
+                        <span class="topup-price">1000 ⭐</span>
+                        <span class="topup-ton">💳 Оплатить</span>
                     </button>
                 </div>
-                <button id="close-topup" class="close-modal">Закрыть</button>
+                <button id="close-stars" class="close-modal">Закрыть</button>
+            </div>
+        </div>
+
+        <!-- TON пополнение -->
+        <div id="ton-modal" class="modal hidden">
+            <div class="modal-content">
+                <h3>⛓ Купить TON</h3>
+                <div id="ton-connect">
+                    <p>Подключите TON Wallet:</p>
+                    <button id="connect-ton" style="width: 100%; padding: 12px; background: #0088CC; color: white; border: none; border-radius: 12px; font-size: 16px;">Подключить @wallet</button>
+                </div>
+                <button id="close-ton" class="close-modal">Закрыть</button>
             </div>
         </div>
     </div>
@@ -387,28 +221,31 @@
         tg.enableClosingAnimation();
 
         const cases = {
-            1: {name: "Бесплатный", stars: 0, ton: 0, rewards: [1, 3, 5]},
-            2: {name: "Бронзовый", stars: 50, ton: 0.5, rewards: [10, 25, 100]},
-            3: {name: "Серебряный", stars: 200, ton: 2, rewards: [50, 250, 500]},
-            4: {name: "Золотой", stars: 500, ton: 5, rewards: [150, 750, 1500]},
-            5: {name: "Платиновый", stars: 1000, ton: 10, rewards: [400, 2000, 5000]}
+            1: {name: "Бесплатный", stars: 0, ton: 0, rewards: [[1,70],[3,25],[5,5]]},
+            2: {name: "Бронзовый", stars: 50, ton: 0.5, rewards: [[10,60],[25,30],[100,10]]},
+            3: {name: "Серебряный", stars: 200, ton: 2, rewards: [[50,55],[250,35],[500,10]]},
+            4: {name: "Золотой", stars: 500, ton: 5, rewards: [[150,50],[750,40],[1500,10]]},
+            5: {name: "Платиновый", stars: 1000, ton: 10, rewards: [[400,45],[2000,45],[5000,10]]}
         };
+
+        const scrollRewards = [
+            '💎 5000⭐', '🥇 1500⭐', '⭐ 100⭐', '💎 2000⭐', '🥇 750⭐', 
+            '⭐ 50⭐', '💎 5000⭐', '🥈 250⭐', '⭐ 25⭐', '🥉 10⭐'
+        ];
 
         let userStars = 0;
         let userTon = 0;
+        let isAnimating = false;
 
         // Инициализация
-        document.addEventListener('DOMContentLoaded', () => {
-            initBalances();
-            initCases();
-            initTopup();
-        });
+        document.addEventListener('DOMContentLoaded', initApp);
 
-        // Загрузка баланса
-        function initBalances() {
+        function initApp() {
             userStars = parseInt(localStorage.getItem('userStars') || '0');
             userTon = parseFloat(localStorage.getItem('userTon') || '0');
             updateBalanceDisplay();
+            initCases();
+            initTopup();
         }
 
         function updateBalanceDisplay() {
@@ -418,40 +255,59 @@
             localStorage.setItem('userTon', userTon);
         }
 
-        // Кейсы
         function initCases() {
+            document.querySelectorAll('.open-case-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openCase(btn.dataset.case);
+                });
+            });
+            
             document.querySelectorAll('.case-card').forEach(card => {
-                card.addEventListener('click', () => openCase(card.dataset.case));
+                card.addEventListener('click', (e) => {
+                    if (!e.target.classList.contains('open-case-btn')) {
+                        openCase(card.dataset.case);
+                    }
+                });
             });
         }
 
         function openCase(caseId) {
-            const caseData = cases[caseId];
+            if (isAnimating) return;
             
-            if (caseId > 1) {
-                if (userStars < caseData.stars && userTon < caseData.ton) {
-                    tg.showAlert('❌ Недостаточно Stars или TON!');
-                    return;
-                }
+            const caseData = cases[caseId];
+            if (caseId > 1 && userStars < caseData.stars && userTon < caseData.ton) {
+                tg.showAlert('❌ Недостаточно баланса!');
+                return;
             }
             
-            showAnimation(caseId);
+            isAnimating = true;
+            showCaseAnimation(caseId);
         }
 
-        // Анимация
-        function showAnimation(caseId) {
+        function showCaseAnimation(caseId) {
             const animation = document.getElementById('case-animation');
-            const rewardAmount = document.getElementById('reward-amount');
+            const scrollContainer = document.getElementById('scroll-rewards');
+            const finalReward = document.getElementById('final-reward');
+            const finalAmount = document.getElementById('final-amount');
             
             animation.classList.remove('hidden');
             
+            // Прокрутка дорогих призов
+            scrollContainer.innerHTML = '';
+            for(let i = 0; i < 20; i++) {
+                const span = document.createElement('span');
+                span.textContent = scrollRewards[Math.floor(Math.random() * scrollRewards.length)];
+                span.style.marginRight = '20px';
+                scrollContainer.appendChild(span);
+            }
+            
             const caseData = cases[caseId];
-            const reward = caseData.rewards[Math.floor(Math.random() * caseData.rewards.length)];
+            // Дешёвый выигрыш (70% шанс)
+            const rewardIndex = Math.random() < 0.7 ? 0 : Math.floor(Math.random() * caseData.rewards.length);
+            const finalRewardStars = caseData.rewards[rewardIndex][0];
             
-            setTimeout(() => {
-                rewardAmount.textContent = reward;
-            }, 1500);
-            
+            // Списание
             if (caseId > 1) {
                 if (userStars >= caseData.stars) {
                     userStars -= caseData.stars;
@@ -460,38 +316,51 @@
                 }
             }
             
-            userStars += reward;
+            // Начисление
+            userStars += finalRewardStars;
+            
+            setTimeout(() => {
+                scrollContainer.style.display = 'none';
+                finalReward.style.display = 'block';
+                finalAmount.textContent = finalRewardStars;
+                tg.HapticFeedback.impactOccurred('heavy');
+            }, 2500);
+            
             updateBalanceDisplay();
             
             setTimeout(() => {
                 animation.classList.add('hidden');
-                tg.HapticFeedback.impactOccurred('medium');
-            }, 3000);
+                scrollContainer.style.display = 'block';
+                finalReward.style.display = 'none';
+                isAnimating = false;
+                tg.HapticFeedback.notificationOccurred('success');
+            }, 4500);
         }
 
-        // Пополнение
         function initTopup() {
+            // Stars
             document.getElementById('topup-btn').addEventListener('click', () => {
-                document.getElementById('topup-modal').classList.remove('hidden');
+                document.getElementById('stars-modal').classList.remove('hidden');
             });
             
-            document.getElementById('close-topup').addEventListener('click', () => {
-                document.getElementById('topup-modal').classList.add('hidden');
+            document.getElementById('close-stars').addEventListener('click', () => {
+                document.getElementById('stars-modal').classList.add('hidden');
             });
             
             document.querySelectorAll('.topup-option').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const stars = parseInt(btn.dataset.stars);
-                    const ton = parseFloat(btn.dataset.ton);
-                    
-                    userStars += stars;
-                    userTon += ton;
-                    updateBalanceDisplay();
-                    
-                    document.getElementById('topup-modal').classList.add('hidden');
-                    tg.showAlert(`✅ Пополнено!\n+${stars}⭐ +${ton} TON`);
-                    tg.HapticFeedback.notificationOccurred('success');
+                    tg.openInvoice('stars_payment', stars, 'Пополнение Stars');
+                    document.getElementById('stars-modal').classList.add('hidden');
                 });
+            });
+            
+            // TON (демо)
+            document.getElementById('connect-ton').addEventListener('click', () => {
+                tg.showAlert('💰 TON Wallet подключён!\n+2.5 TON на баланс');
+                userTon += 2.5;
+                updateBalanceDisplay();
+                document.getElementById('ton-modal').classList.add('hidden');
             });
         }
     </script>
