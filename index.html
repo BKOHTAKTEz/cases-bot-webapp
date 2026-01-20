@@ -9,7 +9,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         html, body {
-            height: 100%; overflow-y: auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            height: 100%; overflow-y: auto; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
         
         body {
@@ -19,21 +20,28 @@
         
         .app { max-width: 400px; margin: 0 auto; }
         
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .header { 
+            display: flex; justify-content: space-between; 
+            align-items: center; margin-bottom: 25px; 
+        }
+        
         h1 { color: white; font-size: 28px; font-weight: 700; }
         
         #topup-btn {
             width: 56px; height: 56px; border-radius: 28px;
-            background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.3);
-            color: white; font-size: 24px; cursor: pointer; backdrop-filter: blur(10px);
-            transition: all 0.3s;
+            background: rgba(255,255,255,0.2); 
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white; font-size: 24px; cursor: pointer; 
+            backdrop-filter: blur(10px); transition: all 0.3s;
         }
         
         #topup-btn:active { transform: scale(0.95); }
         
         .balance {
-            background: rgba(255,255,255,0.95); border-radius: 20px; padding: 25px;
-            margin-bottom: 25px; display: flex; justify-content: space-around;
+            background: rgba(255,255,255,0.95); 
+            border-radius: 20px; padding: 25px;
+            margin-bottom: 25px; display: flex; 
+            justify-content: space-around;
             box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
         
@@ -44,13 +52,17 @@
         .cases-grid { display: flex; flex-direction: column; gap: 15px; }
         
         .case-card {
-            background: rgba(255,255,255,0.95); border-radius: 20px; padding: 25px;
+            background: rgba(255,255,255,0.95); 
+            border-radius: 20px; padding: 25px;
             cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             transition: all 0.3s; border: 3px solid transparent;
         }
         
         .case-card:active { transform: scale(0.98); }
-        .case-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
+        .case-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25); 
+        }
         
         .free { border-color: #34C759; }
         .bronze { border-color: #FF9500; }
@@ -59,35 +71,54 @@
         .platinum { border-color: #AF52DE; }
         
         .case-icon { font-size: 48px; margin-bottom: 15px; display: block; }
-        .case-title { font-size: 20px; font-weight: 700; color: #333; margin-bottom: 10px; text-align: center; }
-        .case-price { font-size: 16px; color: #666; margin-bottom: 20px; text-align: center; }
+        .case-title { 
+            font-size: 20px; font-weight: 700; color: #333; 
+            margin-bottom: 10px; text-align: center; 
+        }
+        .case-price { 
+            font-size: 16px; color: #666; margin-bottom: 20px; 
+            text-align: center; 
+        }
         
         .open-btn {
             width: 100%; padding: 15px; border: none; border-radius: 15px;
-            background: linear-gradient(45deg, #007AFF, #0056CC); color: white;
-            font-size: 18px; font-weight: 700; cursor: pointer; transition: all 0.3s;
+            background: linear-gradient(45deg, #007AFF, #0056CC); 
+            color: white; font-size: 18px; font-weight: 700; 
+            cursor: pointer; transition: all 0.3s;
         }
         
-        .open-btn:active { background: linear-gradient(45deg, #0056CC, #004499); transform: scale(0.98); }
+        .open-btn:active { 
+            background: linear-gradient(45deg, #0056CC, #004499); 
+            transform: scale(0.98); 
+        }
         
-        /* КОНФИРМ */
+        /* Confirm Modal */
         #confirm {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); display: none; align-items: center;
-            justify-content: center; z-index: 10000; padding: 30px;
+            background: rgba(0,0,0,0.95); display: none; 
+            align-items: center; justify-content: center; 
+            z-index: 10000; padding: 30px;
         }
         
         #confirm.show { display: flex; }
         
         .confirm-box {
-            background: linear-gradient(135deg, #1a1a1a, #2d2d2d); border-radius: 25px;
-            padding: 40px; max-width: 380px; width: 95%; text-align: center;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.8); border: 2px solid #FFD700;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d); 
+            border-radius: 25px; padding: 40px; 
+            max-width: 380px; width: 95%; text-align: center;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.8); 
+            border: 2px solid #FFD700;
         }
         
         .confirm-icon { font-size: 64px; margin-bottom: 20px; }
-        .confirm-title { font-size: 24px; font-weight: 800; color: white; margin-bottom: 15px; }
-        .confirm-price { font-size: 20px; color: #FFD700; font-weight: 700; margin-bottom: 30px; }
+        .confirm-title { 
+            font-size: 24px; font-weight: 800; color: white; 
+            margin-bottom: 15px; 
+        }
+        .confirm-price { 
+            font-size: 20px; color: #FFD700; font-weight: 700; 
+            margin-bottom: 30px; 
+        }
         
         .confirm-buttons { display: flex; gap: 15px; justify-content: center; }
         .confirm-yes, .confirm-no {
@@ -95,58 +126,93 @@
             font-size: 18px; font-weight: 700; cursor: pointer;
         }
         
-        .confirm-yes { background: linear-gradient(45deg, #34C759, #28A745); color: white; }
-        .confirm-no { background: linear-gradient(45deg, #6C757D, #5A6268); color: white; }
+        .confirm-yes { 
+            background: linear-gradient(45deg, #34C759, #28A745); color: white; 
+        }
+        .confirm-no { 
+            background: linear-gradient(45deg, #6C757D, #5A6268); color: white; 
+        }
         
-        /* ✅ НОВАЯ РУЛЕТКА С ОСТАНОВКОЙ */
+        /* 🎯 РЕАЛИСТИЧНАЯ РУЛЕТКА С CSS АНИМАЦИЕЙ */
         #animation {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); display: none; align-items: center;
-            justify-content: center; z-index: 9999; flex-direction: column; padding: 40px;
+            background: rgba(0,0,0,0.95); display: none; 
+            align-items: center; justify-content: center; 
+            z-index: 9999; flex-direction: column; padding: 40px;
         }
         
         #animation.show { display: flex; }
         
         .roulette-container {
-            width: 95%; height: 160px; background: linear-gradient(45deg, #FFD700, #FFA500);
-            border-radius: 30px; padding: 30px; position: relative; overflow: hidden;
-            box-shadow: 0 25px 70px rgba(255,215,0,0.5); margin-bottom: 40px;
+            width: 95%; height: 160px; 
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            border-radius: 30px; padding: 30px; position: relative; 
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(255,215,0,0.5); 
+            margin-bottom: 40px;
         }
         
         .roulette-track {
-            position: absolute; top: 50%; left: 0; width: 200%; height: 100%;
-            display: flex; transition: transform 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: absolute; top: 50%; left: 0; width: 300%; 
+            height: 100%; display: flex; 
+            transform: translateX(0);
+            /* ✅ РЕАЛИСТИЧНОЕ ЗАМЕДЛЕНИЕ */
+            transition: transform 5s cubic-bezier(0.23, 1, 0.32, 1);
         }
         
         .reward-item {
-            flex: 0 0 180px; height: 100%; display: flex; align-items: center;
-            justify-content: center; font-size: 24px; font-weight: 800; color: #111;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); padding: 10px;
+            flex: 0 0 160px; height: 100%; display: flex; 
+            align-items: center; justify-content: center; 
+            font-size: 22px; font-weight: 800; color: #111;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); padding: 8px;
         }
         
         .reward-win {
-            flex: 0 0 220px !important; background: linear-gradient(45deg, #FF6B35, #FFD700);
-            color: white !important; text-shadow: none; border-radius: 20px;
-            box-shadow: 0 0 30px rgba(255,107,53,0.8); font-size: 28px !important;
-            transform: scale(1.1);
+            flex: 0 0 200px !important; 
+            background: linear-gradient(45deg, #FF6B35, #FFD700);
+            color: white !important; text-shadow: none; 
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255,107,53,0.8); 
+            font-size: 26px !important;
+            transform: scale(1.15);
         }
         
         .final-result { text-align: center; color: white; display: none; }
         .final-result.show { display: block; }
         
         .final-icon { font-size: 80px; margin-bottom: 20px; }
-        .final-stars { font-size: 60px; font-weight: 900; margin-bottom: 15px; background: linear-gradient(45deg, #FFD700, #FF6B35); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .final-stars { 
+            font-size: 60px; font-weight: 900; margin-bottom: 15px; 
+            background: linear-gradient(45deg, #FFD700, #FF6B35); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+        }
         .final-text { font-size: 24px; font-weight: 700; }
         
         /* Modal */
-        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 10000; padding: 30px; }
+        .modal { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.9); display: none; 
+            align-items: center; justify-content: center; z-index: 10000; 
+            padding: 30px; 
+        }
         .modal.show { display: flex; }
-        .modal-box { background: white; border-radius: 25px; padding: 35px; max-width: 350px; width: 95%; text-align: center; }
+        .modal-box { 
+            background: white; border-radius: 25px; padding: 35px; 
+            max-width: 350px; width: 95%; text-align: center; 
+        }
         .modal-title { font-size: 24px; color: #333; margin-bottom: 25px; }
-        .topup-item { padding: 25px; border: 3px solid #E5E5E7; border-radius: 20px; margin-bottom: 20px; cursor: pointer; transition: all 0.3s; background: #F9F9F9; }
+        .topup-item { 
+            padding: 25px; border: 3px solid #E5E5E7; 
+            border-radius: 20px; margin-bottom: 20px; cursor: pointer; 
+            transition: all 0.3s; background: #F9F9F9; 
+        }
         .topup-item:active { border-color: #007AFF; transform: scale(0.98); }
         .stars-amount { font-size: 28px; font-weight: 700; color: #333; }
-        .close-modal { width: 100%; padding: 15px; border: none; border-radius: 15px; background: #F2F2F7; color: #333; font-size: 18px; font-weight: 600; cursor: pointer; }
+        .close-modal { 
+            width: 100%; padding: 15px; border: none; border-radius: 15px;
+            background: #F2F2F7; color: #333; font-size: 18px; 
+            font-weight: 600; cursor: pointer; 
+        }
     </style>
 </head>
 <body>
@@ -201,7 +267,7 @@
         </div>
     </div>
 
-    <!-- Confirm -->
+    <!-- Confirm Modal -->
     <div id="confirm">
         <div class="confirm-box">
             <div class="confirm-icon" id="confirm-icon">🎁</div>
@@ -214,10 +280,12 @@
         </div>
     </div>
 
-    <!-- ✅ НОВАЯ РУЛЕТКА -->
+    <!-- 🎯 РУЛЕТКА -->
     <div id="animation">
         <div class="roulette-container">
-            <div class="roulette-track" id="roulette-track"></div>
+            <div class="roulette-track" id="roulette-track">
+                <!-- Призы генерируются JS -->
+            </div>
         </div>
         <div class="final-result" id="final-result">
             <div class="final-icon">⭐</div>
@@ -226,7 +294,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Topup Modal -->
     <div id="modal" class="modal">
         <div class="modal-box">
             <h3 class="modal-title">➕ Пополнить Stars</h3>
@@ -265,7 +333,7 @@
 
         const allRewards = ['⭐ 1⭐', '⭐ 3⭐', '⭐ 5⭐', '⭐ 10⭐', '⭐ 25⭐', '⭐ 50⭐', '⭐ 100⭐', '⭐ 250⭐', '⭐ 500⭐', '⭐ 750⭐', '⭐ 1500⭐', '💎 2000⭐', '💎 5000⭐'];
 
-        // Elements
+        // DOM Elements
         const starsEl = document.getElementById('stars-balance');
         const tonEl = document.getElementById('ton-balance');
         const confirmEl = document.getElementById('confirm');
@@ -294,7 +362,8 @@
             const caseData = cases[caseId];
             confirmIconEl.textContent = caseData.icon;
             confirmTitleEl.textContent = caseData.name + ' кейс';
-            confirmPriceEl.textContent = caseData.stars > 0 ? `${caseData.stars}⭐ / ${caseData.ton} TON` : 'БЕСПЛАТНО';
+            confirmPriceEl.textContent = caseData.stars > 0 ? 
+                `${caseData.stars}⭐ / ${caseData.ton} TON` : 'БЕСПЛАТНО';
             confirmEl.classList.add('show');
             tg.HapticFeedback.impactOccurred('medium');
         }
@@ -305,7 +374,12 @@
         }
 
         function initEvents() {
-            topupBtnEl.onclick = () => { modalEl.classList.add('show'); tg.HapticFeedback.impactOccurred('light'); };
+            // Topup modal
+            topupBtnEl.onclick = () => { 
+                modalEl.classList.add('show'); 
+                tg.HapticFeedback.impactOccurred('light'); 
+            };
+            
             closeModalEl.onclick = () => modalEl.classList.remove('show');
             
             document.querySelectorAll('.topup-item').forEach(item => {
@@ -319,11 +393,13 @@
                 };
             });
 
+            // Case buttons
             document.querySelectorAll('.open-btn, .case-card').forEach(card => {
                 card.onclick = (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    const caseId = card.dataset.case || card.closest('.case-card').dataset.case;
+                    const caseId = card.dataset.case || 
+                        card.closest('.case-card').dataset.case;
                     showConfirm(caseId);
                 };
             });
@@ -363,65 +439,64 @@
         }
 
         function showRoulette(caseId) {
-            // Создаём длинную ленту призов
-            rouletteTrackEl.innerHTML = '';
-            
-            // 40 обычных призов + выигрыш
             const caseData = cases[caseId];
             const rand = Math.random();
             let winIndex = 0;
             
-            if (rand < 0.7) winIndex = 0; // 70% шанс минимального
-            else if (rand < 0.95) winIndex = 1; // 25% средний
-            else winIndex = 2; // 5% максимальный
+            if (rand < 0.7) winIndex = 0;
+            else if (rand < 0.95) winIndex = 1;
+            else winIndex = 2;
             
             const winReward = caseData.rewards[winIndex][0];
             const winText = `⭐ ${winReward}⭐`;
 
-            // Заполняем ленту
-            for (let i = 0; i < 45; i++) {
+            // Создаём 50 призов (длинная лента)
+            rouletteTrackEl.innerHTML = '';
+            for (let i = 0; i < 50; i++) {
                 const div = document.createElement('div');
                 div.className = 'reward-item';
                 
-                if (i === 20 + winIndex * 5) { // Позиция выигрыша в центре
+                // Выигрыш на позиции 28 (центр после прокрутки)
+                if (i === 28) {
                     div.className = 'reward-item reward-win';
                     div.textContent = winText;
-                    div.dataset.win = true;
                 } else {
-                    const randomReward = allRewards[Math.floor(Math.random() * allRewards.length)];
-                    div.textContent = randomReward;
+                    div.textContent = allRewards[Math.floor(Math.random() * allRewards.length)];
                 }
                 
                 rouletteTrackEl.appendChild(div);
             }
 
             animationEl.classList.add('show');
-            
-            // ✅ Прокрутка с остановкой на выигрыше
+            tg.HapticFeedback.impactOccurred('heavy');
+
+            // ✅ РЕАЛИСТИЧНАЯ АНИМАЦИЯ - 5 секунд с замедлением
             setTimeout(() => {
-                rouletteTrackEl.style.transform = 'translateX(-1080px)'; // Точно на выигрыш
+                // Прокрутка точно на выигрыш (28 * 160px = 4480px)
+                rouletteTrackEl.style.transform = 'translateX(-4480px)';
                 tg.HapticFeedback.impactOccurred('heavy');
             }, 100);
 
-            stars += winReward;
-            
+            // Показываем результат
             setTimeout(() => {
                 rouletteTrackEl.style.display = 'none';
                 finalResultEl.classList.add('show');
                 finalStarsEl.textContent = winReward;
-                tg.HapticFeedback.impactOccurred('heavy');
-            }, 4200);
+            }, 5200);
 
+            // Закрываем анимацию
             setTimeout(() => {
                 animationEl.classList.remove('show');
                 rouletteTrackEl.style.display = 'flex';
                 finalResultEl.classList.remove('show');
                 animating = false;
+                stars += winReward;
                 tg.HapticFeedback.notificationOccurred('success');
                 updateDisplay();
-            }, 6200);
+            }, 7200);
         }
 
+        // Инициализация
         document.addEventListener('DOMContentLoaded', () => {
             stars = parseInt(localStorage.getItem('stars') || '100');
             ton = parseFloat(localStorage.getItem('ton') || '1.5');
